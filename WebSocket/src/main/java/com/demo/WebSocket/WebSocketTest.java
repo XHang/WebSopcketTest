@@ -1,4 +1,4 @@
-package com.test.WebSocket;
+package com.demo.WebSocket;
 
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
