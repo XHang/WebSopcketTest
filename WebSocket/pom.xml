@@ -25,8 +25,19 @@
   		<groupId>javax.websocket</groupId>
   		<artifactId>javax.websocket-api</artifactId>
  		 <version>1.1</version>
- 		 <scope>test</scope>
-</dependency>
+	</dependency>
+	<dependency>
+  		<groupId>javax.websocket</groupId>
+  		<artifactId>javax.websocket-api</artifactId>
+  		<version>1.1</version>
+  		<classifier>sources</classifier>
+	</dependency>
+	<dependency>
+  		<groupId>javax.websocket</groupId>
+  		<artifactId>javax.websocket-api</artifactId>
+  		<version>1.1</version>
+  		<classifier>javadoc</classifier>
+	</dependency>
   </dependencies>
   <build>
     <finalName>WebSocket</finalName>
