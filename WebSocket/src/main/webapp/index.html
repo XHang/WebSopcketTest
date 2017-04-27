@@ -1,0 +1,48 @@
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="text/javascript" src="resource/jquery-3.2.1.min.js"></script>
+	</head>
+	<body>
+		<h2>WebSocket客户端</h2>
+		昵称<input class="nickname">
+		
+		<textarea rows="20" cols="20"></textarea>		
+		<button class="send">
+			发送
+		</button>
+		<button class="offline">下线</button>
+		
+		
+		
+		<script type="text/javascript">
+			//新建一个WebSocket对象,socket的协议一般以ws开头，安全的协议以wss开头
+			//此步骤已经开启了webSpocket连接
+			var ws=new WebSocket("ws://127.0.0.1:9090/WebSocket/echo");
+			//当Websocket连接时触发该函数
+			ws.onopen = function (){
+				ws.send("Test!");
+			};
+			//当发送信息时调用
+			ws.onmessage = function(evt){
+				console.log(evt.data);
+			}; 
+			//当webSocket连接断开时调用
+			ws.onclose = function(evt){
+					console.log("WebSocketClosed!");
+			}; 
+			//当发送异常时调用
+			ws.onerror = function(evt){
+				console.log("WebSocketError!");
+			};
+			$(".send").click(function(){
+				var msg= $(".msg").val;
+				ws.send(msg);
+			});
+			$(".offline").click(function(){
+				ws.close("主动关闭连接")
+			})
+		</script>
+	</body>
+</html>
