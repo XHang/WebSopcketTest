@@ -8,21 +8,21 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
-//·ÃÎÊÕâ¸öwebSocketµÄÂ·¾¶£¬²¢×¢½âÕâ¸öÀàÊÇÒ»¸öWebSocketÀà
-//×¢Òâ£ºÕâ¸öÀà±ØĞëÒªÓĞ¸öÎŞ²ÎµÄÄ¬ÈÏ¹¹Ôìº¯Êı
-//ÕâÖÖÊµÏÖµÄwebSocketµÄ·½Ê½×ñÑ­±ê×¼ JSR356 ¹æ·¶ÊµÏÖ
-//Ò²ÓĞÒ»ÖÖÊµÏÖÊÇTomcat¸ß°æ±¾×Ô¶¨ÒåµÄapi¡£
-//ÕâÀï²»½âÊÍÁíÒ»ÖÖÁË
+//è®¿é—®è¿™ä¸ªwebSocketçš„è·¯å¾„ï¼Œå¹¶æ³¨è§£è¿™ä¸ªç±»æ˜¯ä¸€ä¸ªWebSocketç±»
+//æ³¨æ„ï¼šè¿™ä¸ªç±»å¿…é¡»è¦æœ‰ä¸ªæ— å‚çš„é»˜è®¤æ„é€ å‡½æ•°
+//è¿™ç§å®ç°çš„webSocketçš„æ–¹å¼éµå¾ªæ ‡å‡† JSR356 è§„èŒƒå®ç°
+//ä¹Ÿæœ‰ä¸€ç§å®ç°æ˜¯Tomcaté«˜ç‰ˆæœ¬è‡ªå®šä¹‰çš„apiã€‚
+//è¿™é‡Œä¸è§£é‡Šå¦ä¸€ç§äº†
 @ServerEndpoint("/echo")
 public class WebSocketTest {
-	//Óë¿Í»§¶ËÁ¬½ÓµÄÍ¨µÀ£¨»á»°£©
+	//ä¸å®¢æˆ·ç«¯è¿æ¥çš„é€šé“ï¼ˆä¼šè¯ï¼‰
 	private Session session;
 	
 	
 	
 	
 	/**
-	 * µ±webSocketÁ¬½Ó´ò¿ªÊ±
+	 * å½“webSocketè¿æ¥æ‰“å¼€æ—¶
 	 * @param session
 	 */
 	@OnOpen
@@ -30,22 +30,22 @@ public class WebSocketTest {
 		
 	}
 	/**
-	 * ÓÃÓÚ½ÓÊÜ´«ÈëµÄ¿Í»§¶ËĞÅÏ¢
+	 * ç”¨äºæ¥å—ä¼ å…¥çš„å®¢æˆ·ç«¯ä¿¡æ¯
 	 */
 	@OnMessage
 	public void onMessage(String message){
 		
 	}
 	/**
-	 * µ±webSocketÁ¬½Ó¹Ø±ÕÊ±
-	 * @param session Á¬½ÓµÄ»á»°
-	 * @param reason ·â×°¸ü¶à¹ØÓÚ¹Ø±ÕµÄÏ¸½Ú
+	 * å½“webSocketè¿æ¥å…³é—­æ—¶
+	 * @param session è¿æ¥çš„ä¼šè¯
+	 * @param reason å°è£…æ›´å¤šå…³äºå…³é—­çš„ç»†èŠ‚
 	 */
 	@OnClose
 	public void onClose(Session session, CloseReason reason){
 	}
 	/**
-	 * ²»ÖªµÀÊ²Ã´Ê±ºò»áµ÷ÓÃ£¬ÔİÇÒÁô×Å
+	 * ä¸çŸ¥é“ä»€ä¹ˆæ—¶å€™ä¼šè°ƒç”¨ï¼Œæš‚ä¸”ç•™ç€
 	 * @param t
 	 */
 	@OnError
