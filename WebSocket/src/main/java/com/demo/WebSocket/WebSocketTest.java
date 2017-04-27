@@ -1,12 +1,13 @@
 package com.demo.WebSocket;
 
+import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
-//·ÃÎÊÕâ¸öwebSocketµÄÂ·¾¶
+//è®¿é—®è¿™ä¸ªwebSocketçš„è·¯å¾„
 @ServerEndpoint("/echo")
 public class WebSocketTest {
-	//Óë¿Í»§¶ËÁ¬½ÓµÄÍ¨µÀ£¨»á»°£©
+	//ä¼šè¯æ‰“å¼€
 	private Session session;
 	
 	
@@ -19,6 +20,6 @@ public class WebSocketTest {
 	@OnOpen
 	public void onOpen(Session session){
 		
-	}
+	} 
 	
 }
