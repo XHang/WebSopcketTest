@@ -3,55 +3,59 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<script type="text/javascript" src="resource/jquery-3.2.1.min.js"></script>
+		  <link href="resource/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    		<script src="resource/bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<h2>WebSocket客户端</h2>
 		 <div class="input-prepend">
         		<span class="add-on">昵称</span>
         		<input class="nickName"  type="text" >
-        		<span class="add-on"  id="connection">建立连接</span>
+        		<button class="btn btn-lg btn-primary"  id="connection">建立连接</button>
 		</div>
-		
-		<div >
-				<textarea rows="20" cols="20"></textarea>		
-				<button class="btn btn-lg btn-primary">
-					发送
-				</button>
-				<button class="btn btn-lg btn-danger">下线</button>
+		<div class="chatRecode"></div>	
+		<div class="input-append">
+				<input class="sendMsg"/>
+				<button class="btn btn-lg btn-primary" id="send">发送</button>
 		</div>
-		
+		<br/>	
+				
+				
+				
+		<button class="btn btn-lg btn-danger"  id="offline">下线</button>
+		<div  class="FriendsList"></div>
 		
 		<script type="text/javascript">
 		var ws=null;
 		var nickName=null;
-			$("#connection").click(){
-				var nickName=$(".nickName").val();
-				if(nickName==null){
+		var targerName =null;
+			$("#connection").click(function(){
+				var nickName=$(".nickName").val;
+				if(nickName===null){
 					alert("请为自己起一个碉堡天的名字吧");
 					return;
 				}
-			}
-		
-		
-			var ws=new WebSocket("ws://127.0.0.1:9090/WebSocket/echo");
-			ws.onopen = function (){
-				ws.send("Test!");
-			};
-			ws.onmessage = function(evt){
-				console.log(evt.data);
+				//var ws=new WebSocket("ws://127.0.0.1:9090/WebSocket/echo?nickName="+nickName);
+			});
+			.onmessage = function(msg){
+				alert("即将打印接受对象，请到控制台查看！");
+				console.log(msg);
 			}; 
 			ws.onclose = function(evt){
-					console.log("WebSocketClosed!");
+					alert("即将打印关闭对象，请到控制台查看！");
+					console.info(evt);
 			}; 
 			ws.onerror = function(evt){
-				console.log("WebSocketError!");
+				alert("服务器连接发生错误,请联系管理员！打印连接错误对象");
+				console.info(evt);
 			};
 			$(".send").click(function(){
 				var msg= $(".msg").val;
 				ws.send(msg);
 			});
-			$(".offline").click(function(){
-				ws.close("主动关闭连接")
+			$("#offline").click(function(){
+				ws.close(1000,"主动关闭连接");
+				window.close();
 			})
 		</script>
 	</body>

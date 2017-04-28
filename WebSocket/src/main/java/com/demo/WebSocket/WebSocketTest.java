@@ -29,20 +29,14 @@ public class WebSocketTest {
 	public void onOpen(Session session){
 		System.out.println("有新的会话加入！它的id为："+session.getId());
 		String nickName=session.getQueryString();
-//		if(users.size()!=0){
-//			pushMsg(nickName);
-//		}
 		users.put(nickName, this);
 		System.out.println("用户"+nickName+"上线了");
-		
 	}
 	/**
 	 * 用于接受传入的客户端信息
 	 */
 	@OnMessage
 	public void onMessage(String message,Session session){
-//		String tagerUser=session.getQueryString();
-//		String sourceUser=users.
 	}
 	/**
 	 * 当webSocket连接关闭时
@@ -74,11 +68,5 @@ public class WebSocketTest {
 			e.printStackTrace();
 		}
 	} 
-	/**
-	 * 通过session来取出它的昵称
-	 */
-	private void getUserNickNameBySession(){
-		
-	}
 	
 }
