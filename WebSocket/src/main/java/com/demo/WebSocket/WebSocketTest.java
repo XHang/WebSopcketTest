@@ -16,15 +16,8 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
-//访问这个webSocket的路径，并注解这个类是一个WebSocket类
-//注意：这个类必须要有个无参的默认构造函数
-//这种实现的webSocket的方式遵循标准 JSR356 规范实现
-//也有一种实现是Tomcat高版本自定义的api。
-//这里不解释另一种了
 @ServerEndpoint("/echo")
 public class WebSocketTest {
-	//与客户端连接的通道（会话）
-	//在线用户个数
 	private  Map<String,WebSocketTest> users=new HashMap<String,WebSocketTest>();
 	
 	Session session;

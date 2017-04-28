@@ -6,33 +6,43 @@
 	</head>
 	<body>
 		<h2>WebSocket客户端</h2>
-		昵称<input class="nickname">
+		 <div class="input-prepend">
+        		<span class="add-on">昵称</span>
+        		<input class="nickName"  type="text" >
+        		<span class="add-on"  id="connection">建立连接</span>
+		</div>
 		
-		<textarea rows="20" cols="20"></textarea>		
-		<button class="send">
-			发送
-		</button>
-		<button class="offline">下线</button>
-		
+		<div >
+				<textarea rows="20" cols="20"></textarea>		
+				<button class="btn btn-lg btn-primary">
+					发送
+				</button>
+				<button class="btn btn-lg btn-danger">下线</button>
+		</div>
 		
 		
 		<script type="text/javascript">
-			//新建一个WebSocket对象,socket的协议一般以ws开头，安全的协议以wss开头
-			//此步骤已经开启了webSpocket连接
+		var ws=null;
+		var nickName=null;
+			$("#connection").click(){
+				var nickName=$(".nickName").val();
+				if(nickName==null){
+					alert("请为自己起一个碉堡天的名字吧");
+					return;
+				}
+			}
+		
+		
 			var ws=new WebSocket("ws://127.0.0.1:9090/WebSocket/echo");
-			//当Websocket连接时触发该函数
 			ws.onopen = function (){
 				ws.send("Test!");
 			};
-			//当发送信息时调用
 			ws.onmessage = function(evt){
 				console.log(evt.data);
 			}; 
-			//当webSocket连接断开时调用
 			ws.onclose = function(evt){
 					console.log("WebSocketClosed!");
 			}; 
-			//当发送异常时调用
 			ws.onerror = function(evt){
 				console.log("WebSocketError!");
 			};
